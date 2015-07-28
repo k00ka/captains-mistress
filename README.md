@@ -37,14 +37,14 @@ You are (almost) there!
 
 ###Rules
 
-The game consists of balls and a rack.  
-There are 2 coloured sets of 21 balls each, coloured black and white.  
-The rack has 7 channels (columns) and 6 rows.  
-The rack is oriented vertically so that the balls create 7 stacks.  
-Two players take turns dropping balls into the channels.  
-A ball falls until it lands on top of the existing stack, or the bottom of the rack.  
-Players cannot drop balls into channels that are full.  
-The winner is the first player to create a line of four balls in any direction.  
+1. The game consists of balls and a rack.  
+1. There are 2 coloured sets of 21 balls each, coloured black and white.  
+1. The rack has 7 channels (columns) and 6 rows.  
+1. The rack is oriented vertically so that the balls create 7 stacks.  
+1. Two players take turns dropping balls into the channels.  
+1. A ball falls until it lands on top of the existing stack, or the bottom of the rack.  
+1. Players cannot drop balls into channels that are full.  
+1. The winner is the first player to create a line of four balls in any direction.  
 
 ###The game?
 
@@ -54,12 +54,15 @@ It's Connect Four!
 
 ###From the very(!) high level here is what we need:
 
-The Game and 2 Players.  
-The Game entity manages the game board, enforces the rules (including flow of play) and game state (including winning conditions).  
-The Player entity answers the question: what is your next move?  
-The Player entity will want to ask questions about the game state in order to make decisions.  
-How do Players ask questions?  
-Through an API!  
+* The Game and 2 Players.  
+* The Game entity manages  
+** the game board  
+** enforcing the rules (including flow of play), and  
+** game state (including winning conditions).  
+* The Player entity answers the question  
+** what is your next move?
+* The Player entity will want to ask questions about the game state in order to make decisions.  
+** How do Players ask questions? Through an API!
 
 ###Divide and conquer
 
