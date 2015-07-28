@@ -71,16 +71,19 @@ Split up into three teams:
 
 ###Plan for development
 
-####Phase 1 
-Game Core Team - use TDD to develop the game components  
-Strategy Team 1 & 2 - research play strategies  
-####Phase 2 
-All - work together to define the API  
-####Phase 3 
-Game Core Team - build the API  
-Strategy Team 1 & 2 - implement (several?) strategies  
-####Phase 4 
-All - pit players against each other and play!  
+####Phase 1
+> Game Core Team - use TDD to develop the game components  
+> Strategy Team 1 & 2 - research play strategies  
+
+####Phase 2
+> All - work together to define the API  
+
+####Phase 3
+> Game Core Team - build the API  
+> Strategy Team 1 & 2 - implement (several?) strategies  
+
+####Phase 4
+> All - pit players against each other and play!  
 
 
 ###Useful resources
