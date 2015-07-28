@@ -35,6 +35,10 @@ Use `bundle show [gemname]` to see where a bundled gem is installed.
 ```
 You are (almost) there!
 
+===
+STOP HERE IF YOU ARE READING THIS BEFORE THE WORKSHOP
+===
+
 ###Rules
 
 1. The game consists of balls and a rack.  
