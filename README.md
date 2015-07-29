@@ -54,7 +54,7 @@ STOP HERE IF YOU ARE READING THIS BEFORE THE WORKSHOP
 
 No, not Bejeweled.  
 It's Connect Four!  
-[images]  
+[see the deck for images]  
 
 ###From the very(!) high level here is what we need:
 
