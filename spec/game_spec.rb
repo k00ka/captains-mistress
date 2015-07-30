@@ -16,6 +16,22 @@ RSpec.describe Game, "#winner?" do
     it "indicates no winner" do
       expect(fresh_game.winner?).to eql(false)
     end
+
+    #it "returns an empty rack" do
+    #  expect(fresh_game.rack).to eql(["-------","-------","-------","-------","-------","-------"])
+    #end
+  end
+
+  it "can detect a non-full channel" do
+    game = fresh_game
+    game.super_special_hidden_rack_setting_method([["w","b","w","b","w"],[],[],[],[],[],[]])
+    expect(game.channel_full?(1)).to eql(false)
+  end
+
+  it "can detect a full channel" do
+    game = fresh_game
+    game.super_special_hidden_rack_setting_method([["w","b","w","b","w","b"],[],[],[],[],[],[]])
+    expect(game.channel_full?(1)).to eql(true)
   end
   
   # more tests go here
