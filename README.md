@@ -35,60 +35,71 @@ Use `bundle show [gemname]` to see where a bundled gem is installed.
 ```
 You are (almost) there!
 
+===
+STOP HERE IF YOU ARE READING THIS BEFORE THE WORKSHOP
+===
+
 ###Rules
 
-The game consists of balls and a rack.
-There are 2 coloured sets of 21 balls each, coloured black and white.
-The rack has 7 channels (columns) and 6 rows.
-The rack is oriented vertically so that the balls create 7 stacks.
-Two players take turns dropping balls into the channels.
-A ball falls until it lands on top of the existing stack, or the bottom of the rack.
-Players cannot drop balls into channels that are full.
-The winner is the first player to create a line of four balls in any direction.
+1. The game consists of balls and a rack.  
+1. There are 2 coloured sets of 21 balls each, coloured black and white.  
+1. The rack has 7 channels (columns) and 6 rows.  
+1. The rack is oriented vertically so that the balls create 7 stacks.  
+1. Two players take turns dropping balls into the channels.  
+1. A ball falls until it lands on top of the existing stack, or the bottom of the rack.  
+1. Players cannot drop balls into channels that are full.  
+1. The winner is the first player to create a line of four balls in any direction.  
 
 ###The game?
 
-No, not Bejeweled.
-It's Connect Four!
-[images]
+No, not Bejeweled.  
+It's Connect Four!  
+[see the deck for images]  
 
 ###From the very(!) high level here is what we need:
 
-The Game and 2 Players.
-The Game entity manages the game board, enforces the rules (including flow of play) and game state (including winning conditions).
-The Player entity answers the question: what is your next move?
-The Player entity will want to ask questions about the game state in order to make decisions.
-How do Players ask questions?
-Through an API!
+* The Game and 2 Players.  
+* The Game entity manages  
+** the game board  
+** enforcing the rules (including flow of play), and  
+** game state (including winning conditions).  
+* The Player entity answers the question  
+** what is your next move?
+* The Player entity will want to ask questions about the game state in order to make decisions.  
+** How do Players ask questions? Through an API!
 
 ###Divide and conquer
 
 Split up into three teams:
-1. Strategy Team 1
-1. Strategy Team 2
-1. Core Team
+
+1. Strategy Team 1  
+1. Strategy Team 2  
+1. Game Core Team  
 
 ###Plan for development
 
 ####Phase 1
-Core Team - use TDD to develop the game components
-Strategy Team 1 & 2 - research play strategies
+> Game Core Team - use TDD to develop the game components  
+> Strategy Team 1 & 2 - research play strategies  
+
 ####Phase 2
-All - work together to define the API
+> All - work together to define the API  
+
 ####Phase 3
-Core Team - build the API
-Strategy Team 1 & 2 - implement (several?) strategies
+> Game Core Team - build the API  
+> Strategy Team 1 & 2 - implement (several?) strategies  
+
 ####Phase 4
-All - pit players against each other and play!
+> All - pit players against each other and play!  
 
 
 ###Useful resources
-####Game Core Team
-https://www.pivotaltracker.com/n/projects/1396446
+####Game Core Team 
+https://www.pivotaltracker.com/n/projects/1396446  
 
-####Strategy Teams
-http://gizmodo.com/heres-how-to-win-every-time-at-connect-four-1474572099
-https://en.wikipedia.org/wiki/Connect_Four
+####Strategy Teams 
+http://gizmodo.com/heres-how-to-win-every-time-at-connect-four-1474572099  
+https://en.wikipedia.org/wiki/Connect_Four  
 
 
-If you want to learn (more) about TDD, there are plenty of online resources. For a quick primer, you can review our blog post from the previous workshop: [http://www.ryatta.com/refactoring-in-context/]
+If you want to learn (more) about TDD, there are plenty of online resources. For a quick primer, you can review our blog post from the previous workshop: [http://www.ryatta.com/refactoring-in-context/] 
