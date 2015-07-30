@@ -103,3 +103,8 @@ https://en.wikipedia.org/wiki/Connect_Four
 
 
 If you want to learn (more) about TDD, there are plenty of online resources. For a quick primer, you can review our blog post from the previous workshop: [http://www.ryatta.com/refactoring-in-context/] 
+
+###To play:
+```sh
+% ruby play.rb
+```
