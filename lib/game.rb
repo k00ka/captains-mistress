@@ -3,9 +3,9 @@
 class Game
   def initialize(player1, player2)
     @rack = [[], [], [], [], [], [], []]
-    @white_player, @black_player = randomize_players(player1, player2)
-    setup_player(@white_player, "white")
-    setup_player(@black_player, "black")
+    @ex_player, @oh_player = randomize_players(player1, player2)
+    setup_player(@ex_player, "ex")
+    setup_player(@oh_player, "oh")
   end
 
   def setup_player(player, ball_colour)
@@ -39,29 +39,29 @@ class Game
   end
 
   def winner
-    white_winners = "◉◉◉◉"
-    black_winners = "○○○○"
+    ex_winners = "xxxx"
+    oh_winners = "oooo"
     channel_strings = @rack.map { |ch| ch.join }
-    return "white" if channel_strings.any? { |ch| ch.include? white_winners }
-    return "black" if channel_strings.any? { |ch| ch.include? black_winners }
+    return "ex" if channel_strings.any? { |ch| ch.include? ex_winners }
+    return "oh" if channel_strings.any? { |ch| ch.include? oh_winners }
     expanded_rack = @rack.map { |ch| ch.dup.fill(" ", ch.length..5) }
     row_strings = expanded_rack.transpose.map { |row| row.join.strip }
-    return "white" if row_strings.any? { |row| row.include? white_winners }
-    return "black" if row_strings.any? { |row| row.include? black_winners }
+    return "ex" if row_strings.any? { |row| row.include? ex_winners }
+    return "oh" if row_strings.any? { |row| row.include? oh_winners }
     diagonal_right_strings = expanded_rack.each_with_index.map { |ch,i| ch[[3-i,0].max..[8-i,5].min].push(*[" "] * [3-i,0].max).unshift(*[" "] * [i-3,0].max) }.transpose.map { |diag| diag.join.strip }
-    return "white" if diagonal_right_strings.any? { |diag| diag.include? white_winners }
-    return "black" if diagonal_right_strings.any? { |diag| diag.include? black_winners }
+    return "ex" if diagonal_right_strings.any? { |diag| diag.include? ex_winners }
+    return "oh" if diagonal_right_strings.any? { |diag| diag.include? oh_winners }
     diagonal_left_strings = expanded_rack.each_with_index.map { |ch,i| ch[[i-3,0].max..[i+2,5].min].unshift(*[" "] * [3-i,0].max).push(*[" "] * [i-3,0].max) }.transpose.map { |diag| diag.join.strip }
-    return "white" if diagonal_left_strings.any? { |diag| diag.include? white_winners }
-    return "black" if diagonal_left_strings.any? { |diag| diag.include? black_winners }
+    return "ex" if diagonal_left_strings.any? { |diag| diag.include? ex_winners }
+    return "oh" if diagonal_left_strings.any? { |diag| diag.include? oh_winners }
   end
 
   def symbol_for(ball_colour)
     case ball_colour
-    when "white"
-      "◉"
-    when "black"
-      "○"
+    when "ex"
+      "x"
+    when "oh"
+      "o"
     else
       " "
     end
@@ -85,11 +85,11 @@ class Game
 
   def play
     loop do
-      take_turn(@white_player)
+      take_turn(@ex_player)
       print_rack
       break if game_over?
 
-      take_turn(@black_player)
+      take_turn(@oh_player)
       print_rack
       break if game_over?
     end
