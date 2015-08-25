@@ -84,6 +84,7 @@ class Game
   end
 
   def play
+    print_rack
     loop do
       take_turn(@ex_player)
       print_rack
