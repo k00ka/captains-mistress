@@ -37,25 +37,26 @@ class Game
   end
 
   def winner?
-    !winner.nil?
+    winner != nil
   end
 
   def winner
+    return @winner if @winner
     ex_winners = "xxxx"
     oh_winners = "oooo"
     channel_strings = @rack.map { |ch| ch.join }
-    return "ex" if channel_strings.any? { |ch| ch.include? ex_winners }
-    return "oh" if channel_strings.any? { |ch| ch.include? oh_winners }
+    return @winner = "ex" if channel_strings.any? { |ch| ch.include? ex_winners }
+    return @winner = "oh" if channel_strings.any? { |ch| ch.include? oh_winners }
     expanded_rack = @rack.map { |ch| ch.dup.fill(" ", ch.length..5) }
     row_strings = expanded_rack.transpose.map { |row| row.join.strip }
-    return "ex" if row_strings.any? { |row| row.include? ex_winners }
-    return "oh" if row_strings.any? { |row| row.include? oh_winners }
+    return @winner = "ex" if row_strings.any? { |row| row.include? ex_winners }
+    return @winner = "oh" if row_strings.any? { |row| row.include? oh_winners }
     diagonal_right_strings = expanded_rack.each_with_index.map { |ch,i| ch[[3-i,0].max..[8-i,5].min].push(*[" "] * [3-i,0].max).unshift(*[" "] * [i-3,0].max) }.transpose.map { |diag| diag.join.strip }
-    return "ex" if diagonal_right_strings.any? { |diag| diag.include? ex_winners }
-    return "oh" if diagonal_right_strings.any? { |diag| diag.include? oh_winners }
+    return @winner = "ex" if diagonal_right_strings.any? { |diag| diag.include? ex_winners }
+    return @winner = "oh" if diagonal_right_strings.any? { |diag| diag.include? oh_winners }
     diagonal_left_strings = expanded_rack.each_with_index.map { |ch,i| ch[[i-3,0].max..[i+2,5].min].unshift(*[" "] * [3-i,0].max).push(*[" "] * [i-3,0].max) }.transpose.map { |diag| diag.join.strip }
-    return "ex" if diagonal_left_strings.any? { |diag| diag.include? ex_winners }
-    return "oh" if diagonal_left_strings.any? { |diag| diag.include? oh_winners }
+    return @winner = "ex" if diagonal_left_strings.any? { |diag| diag.include? ex_winners }
+    return @winner = "oh" if diagonal_left_strings.any? { |diag| diag.include? oh_winners }
   end
 
   def symbol_for(team_name)
