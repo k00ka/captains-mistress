@@ -8,8 +8,8 @@ class Game
     setup_player(@oh_player, "oh")
   end
 
-  def setup_player(player, ball_colour)
-    player.ball_colour = ball_colour
+  def setup_player(player, team_name)
+    player.team_name = team_name
     player.game = self
   end
 
@@ -56,8 +56,8 @@ class Game
     return "oh" if diagonal_left_strings.any? { |diag| diag.include? oh_winners }
   end
 
-  def symbol_for(ball_colour)
-    case ball_colour
+  def symbol_for(team_name)
+    case team_name
     when "ex"
       "x"
     when "oh"
@@ -67,8 +67,8 @@ class Game
     end
   end
 
-  def drop_ball(ball_colour, channel)
-    @rack[channel-1] << symbol_for(ball_colour)
+  def drop_ball(team_name, channel)
+    @rack[channel-1] << symbol_for(team_name)
   end
 
   def valid_channel?(channel)
@@ -83,7 +83,7 @@ class Game
       puts "You can't play a piece there."
       print prompt
     end
-    drop_ball(player.ball_colour, channel)
+    drop_ball(player.team_name, channel)
   end
 
   def play

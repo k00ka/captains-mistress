@@ -1,7 +1,7 @@
 class Player
-  attr_accessor :game, :ball_colour
+  attr_accessor :game, :team_name
 
   def name
-    @name || @ball_colour
+    @name || @team_name
   end
 end
