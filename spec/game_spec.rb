@@ -24,13 +24,13 @@ RSpec.describe Game, "#winner?" do
 
   it "can detect a non-full channel" do
     game = fresh_game
-    game.super_special_hidden_rack_setting_method([["w","b","w","b","w"],[],[],[],[],[],[]])
+    game.set_rack([["x","o","x","o","x"],[],[],[],[],[],[]])
     expect(game.channel_full?(1)).to eql(false)
   end
 
   it "can detect a full channel" do
     game = fresh_game
-    game.super_special_hidden_rack_setting_method([["w","b","w","b","w","b"],[],[],[],[],[],[]])
+    game.set_rack([["x","o","x","o","x","o"],[],[],[],[],[],[]])
     expect(game.channel_full?(1)).to eql(true)
   end
   

@@ -13,8 +13,10 @@ class Game
     player.game = self
   end
 
-  def super_special_hidden_rack_setting_method(rack)
-    @rack = rack
+  if Object.const_defined?('RSpec')
+    def set_rack(rack)
+      @rack = rack
+    end
   end
 
   def rack_full?
