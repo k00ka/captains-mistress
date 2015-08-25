@@ -59,34 +59,8 @@ class Game
     return @winner = "oh" if diagonal_left_strings.any? { |diag| diag.include? oh_winners }
   end
 
-  def symbol_for(team_name)
-    case team_name
-    when "ex"
-      "x"
-    when "oh"
-      "o"
-    else
-      " "
-    end
-  end
-
-  def drop_ball(team_name, channel)
-    @rack[channel-1] << symbol_for(team_name)
-  end
-
   def valid_channel?(channel)
     (1..7).include?(channel) && !channel_full?(channel)
-  end
-
-  def take_turn(player)
-    prompt = "Your move, #{player.name}: "
-    print prompt
-    while channel = player.move
-      break if valid_channel?(channel)
-      puts "You can't play a piece there."
-      print prompt
-    end
-    drop_ball(player.team_name, channel)
   end
 
   def play
@@ -110,5 +84,31 @@ class Game
 private
   def randomize_players(p1, p2)
     (rand < 0.5) ? [ p1, p2 ] : [ p2, p1 ]
+  end
+
+  def take_turn(player)
+    prompt = "Your move, #{player.name}: "
+    print prompt
+    while channel = player.move
+      break if valid_channel?(channel)
+      puts "You can't play a piece there."
+      print prompt
+    end
+    drop_ball(player.team_name, channel)
+  end
+
+  def drop_ball(team_name, channel)
+    @rack[channel-1] << symbol_for(team_name)
+  end
+
+  def symbol_for(team_name)
+    case team_name
+    when "ex"
+      "x"
+    when "oh"
+      "o"
+    else
+      " "
+    end
   end
 end
