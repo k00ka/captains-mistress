@@ -76,10 +76,13 @@ class Game
   end
 
   def take_turn(player)
-    begin
-      print "Your move, #{player.name}: "
-      channel = player.move
-    end until valid_channel?(channel)
+    prompt = "Your move, #{player.name}: "
+    print prompt
+    while channel = player.move
+      break if valid_channel?(channel)
+      puts "You can't play a piece there."
+      print prompt
+    end
     drop_ball(player.ball_colour, channel)
   end
 
