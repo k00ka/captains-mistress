@@ -13,7 +13,7 @@ class Game
     player.game = self
   end
 
-  if Object.const_defined?('RSpec')
+  if Object.const_defined?('RSpec') # effectively, Rails.env.test?
     def set_rack(rack)
       @rack = rack
     end
