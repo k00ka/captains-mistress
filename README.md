@@ -110,4 +110,6 @@ The first part of this project was presented at Ruby Hack Night on July 29, 2015
 Instructions for the second session:
 ===
 
-The second part of this project will be presented at Ruby Hack Night on August 27, 2015. The starting point is the current rhn2 branch. The output from that session will be pushed to the rhn2 branch so we have a final record of all work.
+The second part of this project will be presented at Ruby Hack Night on August 27, 2015. The starting point is the current rhn2 branch. Instructions are contained in the PDF available in the root of the project on the rhn2 branch.
+
+The output from that session will be pushed to the rhn2 branch so we have a final record of all work.
