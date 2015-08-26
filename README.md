@@ -36,7 +36,7 @@ Use `bundle show [gemname]` to see where a bundled gem is installed.
 You are (almost) there!
 
 ===
-STOP HERE IF YOU ARE READING THIS BEFORE THE WORKSHOP
+Instructions for the first session:
 ===
 
 ###Rules
@@ -103,3 +103,11 @@ https://en.wikipedia.org/wiki/Connect_Four
 
 
 If you want to learn (more) about TDD, there are plenty of online resources. For a quick primer, you can review our blog post from the previous workshop: [http://www.ryatta.com/refactoring-in-context/] 
+
+The first part of this project was presented at Ruby Hack Night on July 29, 2015. The output from that session is contained in the rhn1 branch.
+
+===
+Instructions for the second session:
+===
+
+The second part of this project will be presented at Ruby Hack Night on August 27, 2015. The starting point is the current rhn2 branch. The output from that session will be pushed to the rhn2 branch so we have a final record of all work.
