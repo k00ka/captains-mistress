@@ -14,8 +14,9 @@ class Game
   end
 
   if Object.const_defined?('RSpec') # effectively, Rails.env.test?
-    def set_rack(rack)
+    def set_rack!(rack)
       @rack = rack
+      self
     end
   end
 
