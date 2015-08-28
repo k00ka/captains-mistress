@@ -6,7 +6,7 @@ class Automaton < Player
   def move
     begin
       channel = (rand * 7 + 1).floor
-    end while @game.channel_full?(channel)
+    end while @game.rack.channel_full?(channel)
     puts channel
     channel
   end
