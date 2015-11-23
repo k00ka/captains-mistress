@@ -1,3 +1,4 @@
+#require 'debugger'
 require './lib/game'
 require './lib/player'
 require './lib/human'
@@ -12,18 +13,35 @@ def print_menu
   print "> "
 end
 
+def automaton_menu
+  puts "Automatons"
+  automatons = Automaton.descendants
+  automatons.each_with_index { |a,i| puts "#{i+1}. #{a.name}" }
+end
+
+def automaton_selection(prompt)
+  print "#{[prompt, '>'].join ' '} ".capitalize
+  Automaton.descendants[gets.chomp.to_i-1].new
+end
+
 loop do
   print_menu
   choice = gets.chomp
   case choice
   when '1'
-    game = Game.new(Human.new, Human.new)
+    p1 = Human.new
+    p2 = Human.new
   when '2'
-    game = Game.new(Human.new, Automaton.new)
+    automaton_menu
+    p1 = Human.new
+    p2 = automaton_selection("player 2")
   when '3'
-    game = Game.new(Automaton.new, Automaton.new)
+    automaton_menu
+    p1 = automaton_selection("player 1")
+    p2 = automaton_selection("player 2")
   when 'q'
     exit 0
   end
+  game = Game.new(p1, p2)
   game.play if game
 end

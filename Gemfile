@@ -1,15 +1,22 @@
 source 'https://rubygems.org'
 
-# Approval testing
-#gem 'approvals'
-
-# Code quality metrics
-gem 'flog'
-
-# Mutation testing
-#gem 'mutant'
-#gem 'mutant-rspec'
-
 gem 'rake'
-gem 'rspec'
-gem 'simplecov'
+
+group :development, :test do
+  # Approval testing
+  #gem 'approvals'
+
+  # Code quality metrics
+  gem 'flog'
+
+  # Mutation testing
+  #gem 'mutant'
+  #gem 'mutant-rspec'
+
+  gem 'rspec'
+  gem 'simplecov'
+end
+
+group :development do
+  gem 'debugger'
+end

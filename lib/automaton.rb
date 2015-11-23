@@ -1,13 +1,17 @@
 class Automaton < Player
+  def self.descendants
+    ObjectSpace.each_object(Class).select { |klass| klass < self }
+  end
+
   def initialize(name = nil)
-    @name = name || "George"
+    @name = name || self.class.name
   end
 
   def move
-    begin
-      channel = (rand * 7 + 1).floor
-    end while @game.rack.channel_full?(channel)
-    puts channel
-    channel
+    raise NotImplementedError
   end
 end
+
+# require all of the automatons
+
+Dir['./lib/automatons/*.rb'].each { |f| require f }
