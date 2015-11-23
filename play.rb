@@ -20,7 +20,7 @@ def automaton_menu
 end
 
 def automaton_selection(prompt)
-  print "#{[prompt, '>'].join ' '} ".capitalize
+  print "#{[prompt, '>'].join ' '} "
   Automaton.descendants[gets.chomp.to_i-1].new
 end
 
@@ -34,11 +34,11 @@ loop do
   when '2'
     automaton_menu
     p1 = Human.new
-    p2 = automaton_selection("player 2")
+    p2 = automaton_selection("Player 2")
   when '3'
     automaton_menu
-    p1 = automaton_selection("player 1")
-    p2 = automaton_selection("player 2")
+    p1 = automaton_selection("Player 1")
+    p2 = automaton_selection("Player 2")
   when 'q'
     exit 0
   end

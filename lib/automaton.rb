@@ -12,6 +12,5 @@ class Automaton < Player
   end
 end
 
-# require all of the automatons
-
+# load all automatons
 Dir['./lib/automatons/*.rb'].each { |f| require f }
