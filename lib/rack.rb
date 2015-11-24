@@ -81,7 +81,7 @@ private
   end
 
   def expanded_rack
-    (0..6).map { |ch| expanded_channel(ch) }
+    (1..7).map { |ch| expanded_channel(ch) }
   end
 
   def match(rack, patre, patlen)
