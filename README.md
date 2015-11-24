@@ -94,17 +94,23 @@ Split up into three teams:
 
 
 ###Useful resources
-####Game Core Team 
+####Game Core Team
 https://www.pivotaltracker.com/n/projects/1396446  
 
-####Strategy Teams 
+####Strategy Teams
 http://gizmodo.com/heres-how-to-win-every-time-at-connect-four-1474572099  
 https://en.wikipedia.org/wiki/Connect_Four  
 
 
-If you want to learn (more) about TDD, there are plenty of online resources. For a quick primer, you can review our blog post from the previous workshop: [http://www.ryatta.com/refactoring-in-context/] 
+If you want to learn (more) about TDD, there are plenty of online resources. For a quick primer, you can review our blog post from the previous workshop: [http://www.ryatta.com/refactoring-in-context/]
 
 ###To play:
 ```sh
 % ruby play.rb
 ```
+
+###Adding an Automaton
+1. New automatons are created in the lib/automaton directory.
+1. The name of the automaton is the class name, it must inherit from the ``Automaton`` class.
+1. The automaton must implement the move method (otherwise a runtime error is raised).
+1. You may use the public interfaces of any classes. The most interesting interfaces will be the ``Rack``, ``Cell``, and ``Game`` classes.
