@@ -35,8 +35,8 @@ class Game
     ex_winner_pattern = "xxxx"
     oh_winner_pattern = "oooo"
     
-    return @winner = "ex" unless @rack.find_locations(ex_winner_pattern).empty?
-    return @winner = "oh" unless @rack.find_locations(oh_winner_pattern).empty?
+    return @winner = @ex_player unless @rack.find_locations(ex_winner_pattern).empty?
+    return @winner = @oh_player unless @rack.find_locations(oh_winner_pattern).empty?
     nil
   end
 
@@ -52,7 +52,7 @@ class Game
       break if game_over?
     end
     if winner?
-      puts "The winner is #{winner}!"
+      puts "The winner is #{winner.name} (#{winner.team_name})!"
     else
       puts "It was a draw."
     end
