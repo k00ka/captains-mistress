@@ -1,4 +1,5 @@
 class Automaton < Player
+  # Which classes inherit from me?
   def self.descendants
     ObjectSpace.each_object(Class).select { |klass| klass < self }
   end

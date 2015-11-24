@@ -1,40 +1,18 @@
+require_relative 'cell'
+
 class Rack
+
+  Empty = Cell::Empty
+  Ex = 'x'
+  Oh = 'o'
 
   def initialize
     @rack = [[], [], [], [], [], [], []]
   end
 
-  def find_locations(pattern)
-    expanded_rack = @rack.map { |ch| ch.dup.fill(" ", ch.length..5) }
-
-    channel_strings = expanded_rack.map { |ch| ch.join }
-    return true if channel_strings.any? { |ch| ch.include? pattern }
-
-    row_strings = expanded_rack.transpose.map { |row| row.join.strip }
-    return true if row_strings.any? { |row| row.include? pattern }
-
-    diagonal_right_strings = expanded_rack.each_with_index.map { |ch,i| ch[[3-i,0].max..[8-i,5].min].push(*[" "] * [3-i,0].max).unshift(*[" "] * [i-3,0].max) }.transpose.map { |diag| diag.join.strip }
-    return true if diagonal_right_strings.any? { |diag| diag.include? pattern }
-
-    diagonal_left_strings = expanded_rack.each_with_index.map { |ch,i| ch[[i-3,0].max..[i+2,5].min].unshift(*[" "] * [3-i,0].max).push(*[" "] * [i-3,0].max) }.transpose.map { |diag| diag.join.strip }
-    return true if diagonal_left_strings.any? { |diag| diag.include? pattern }
-
-    false
-  end
-
-  def playable_cells
-    cells = []
-    (0..6).each do |channel|
-      cells << "#{channel + 1}#{"FEDCBA"[@rack[channel].length]}" unless channel_full?(channel)
-    end
-    cells
-  end
-
-  if Object.const_defined?('RSpec') # effectively, Rails.env.test?
-    def set_rack!(rack)
-      @rack = rack
-      self
-    end
+  def print_rack
+    puts "1|2|3|4|5|6|7"
+    puts expanded_rack.transpose.map { |row| row.join("|") }.reverse
   end
 
   def rack_full?
@@ -45,9 +23,16 @@ class Rack
     @rack[channel-1].length == 6
   end
 
-  def print_rack
-    puts "1|2|3|4|5|6|7"
-    puts @rack.map { |channel| channel.dup.fill(" ", channel.length..5) }.transpose.map{ |row| row.join("|") }.reverse
+  def cell_address(i,j)
+    "#{i}#{"FEDCBA"[j]}"
+  end
+
+  def playable_cell_address(channel)
+    cell_address(channel, @rack[channel-1].length)
+  end
+
+  def playable_cells
+    (1..7).to_a.reject { |c| channel_full?(c) }.map {|c| playable_cell_address(c) }
   end
 
   def valid_channel?(channel)
@@ -55,6 +40,59 @@ class Rack
   end
 
   def drop_ball(symbol, channel)
-    @rack[channel-1] << symbol
+    @rack[channel-1] << Cell.new(symbol, playable_cell_address(channel))
+  end
+
+  def diag_right_rotate(rack)
+    rack.transpose.flatten.group_by.with_index { |_,k| k.divmod(rack.size).inject(:+) }.values
+  end
+
+  def diag_left_rotate(rack)
+    # TODO: find a way to remove the two reverses.
+    rack.map(&:reverse).transpose.flatten.group_by.with_index { |_,k| k.divmod(rack.size).inject(:+) }.values.map(&:reverse)
+  end
+
+  # direction can be "all", "channel", "row", "diag_right", "diag_left"
+  def find_locations(pattern, direction = "all")
+    rack = expanded_rack.map(&:reverse)
+    patre = /(?=(#{Regexp.quote(pattern)}))/
+    patlen = pattern.length
+    matches = []
+
+    matches += match(rack, patre, patlen) if %w(channel all).include?(direction)
+    matches += match(rack.transpose, patre, patlen) if %w(row all).include?(direction)
+    matches += match(diag_right_rotate(rack), patre, patlen) if %w(diag_right all).include?(direction)
+    matches += match(diag_left_rotate(rack), patre, patlen) if %w(diag_right all).include?(direction)
+    matches
+  end
+
+  if Object.const_defined?('RSpec') # effectively, Rails.env.test?
+    def set_rack!(rack)
+      @rack = rack
+      self
+    end
+  end
+
+private
+  def expanded_channel(channel)
+    ec = @rack[channel-1].dup
+    ec[5] = nil #extend array
+    ec.fill { |i| ec[i] || Cell.new(Empty, cell_address(channel, i)) }
+  end
+
+  def expanded_rack
+    (1..7).map { |ch| expanded_channel(ch) }
+  end
+
+  def match(rack, patre, patlen)
+    # use strings to find the locations
+    strings = rack.map { |cells| cells.join }
+    match_begins = strings.map do |str|
+      locs = []
+      str.scan(patre) { locs << $~.begin(0) }
+      locs
+    end
+    # map strings back into cells
+    rack.zip(match_begins).map { |cells,match_begins| match_begins.map { |match_begin| cells[match_begin,patlen] } }.flatten(1)
   end
 end

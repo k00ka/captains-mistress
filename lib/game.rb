@@ -35,8 +35,8 @@ class Game
     ex_winner_pattern = "xxxx"
     oh_winner_pattern = "oooo"
     
-    return @winner = "ex" if @rack.find_locations(ex_winner_pattern)
-    return @winner = "oh" if @rack.find_locations(oh_winner_pattern)
+    return @winner = "ex" unless @rack.find_locations(ex_winner_pattern).empty?
+    return @winner = "oh" unless @rack.find_locations(oh_winner_pattern).empty?
     nil
   end
 
@@ -81,11 +81,11 @@ private
   def symbol_for(team_name)
     case team_name
     when "ex"
-      "x"
+      Rack::Ex
     when "oh"
-      "o"
+      Rack::Oh
     else
-      " "
+      Rack::Empty
     end
   end
 end

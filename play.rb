@@ -1,4 +1,4 @@
-#require 'debugger'
+require 'debugger'
 require './lib/game'
 require './lib/player'
 require './lib/human'
