@@ -10,6 +10,7 @@ def print_menu
   puts "1. Two humans"
   puts "2. Man versus Machine"
   puts "3. Nothing but silicon"
+  puts "4. Toggle Match Mode [#{@match_mode ? "on" : "off"}]"
   print "> "
 end
 
@@ -28,6 +29,7 @@ def automaton_selection(prompt)
 end
 
 loop do
+  match_score = Hash.new(0)
   print_menu
   choice = gets.chomp
   case choice
@@ -42,11 +44,27 @@ loop do
     automaton_menu
     p1 = automaton_selection("Player 1")
     p2 = automaton_selection("Player 2")
+  when '4'
+    @match_mode = !@match_mode
   when 'q'
     exit 0
   end
   if p1 && p2
-    game = Game.new(p1, p2)
-    game.play if game
+    games_to_play = @match_mode ? 15 : 1
+    games_to_play.times do |game_number|
+      puts "Game #{game_number} begins..."
+      p1.prepare_to_play
+      p2.prepare_to_play
+      game = Game.new(p1, p2)
+      game.play
+      match_score[game.winner] += 1
+    end
+    if @match_mode
+      puts "==========="
+      puts "Match score"
+      puts "==========="
+      puts match_score.map { |k,v| "#{k.name}: #{v}" }.join("\n")
+      puts "==========="
+    end
   end
 end

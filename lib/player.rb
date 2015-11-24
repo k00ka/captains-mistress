@@ -4,4 +4,7 @@ class Player
   def name
     @name || @team_name
   end
+
+  def prepare_to_play
+  end
 end
