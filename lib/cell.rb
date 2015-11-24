@@ -15,4 +15,8 @@ class Cell
   def inspect
     "#{@content} (#{@address})"
   end
+
+  def self.cell_address(i,j)
+    "#{i}#{"FEDCBA"[j]}"
+  end
 end

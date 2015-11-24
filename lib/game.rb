@@ -54,6 +54,11 @@ class Game
   end
 
 private
+  def setup_player(player, team_name)
+    player.team_name = team_name
+    player.game = self
+  end
+
   def randomize_players(p1, p2)
     (rand < 0.5) ? [ p1, p2 ] : [ p2, p1 ]
   end
@@ -82,10 +87,5 @@ private
     else
       Rack::Empty
     end
-  end
-
-  def setup_player(player, team_name)
-    player.team_name = team_name
-    player.game = self
   end
 end

@@ -23,12 +23,8 @@ class Rack
     @rack[channel-1].length == 6
   end
 
-  def cell_address(i,j)
-    "#{i}#{"FEDCBA"[j]}"
-  end
-
   def playable_cell_address(channel)
-    cell_address(channel, @rack[channel-1].length)
+    Cell.cell_address(channel, @rack[channel-1].length)
   end
 
   def playable_cells
@@ -77,7 +73,7 @@ private
   def expanded_channel(channel)
     ec = @rack[channel-1].dup
     ec += [nil] * (6 - ec.length) # pad to proper length
-    ec.fill { |i| ec[i] || Cell.new(Empty, cell_address(channel, i)) }
+    ec.fill { |i| ec[i] || Cell.new(Empty, Cell.cell_address(channel, i)) }
   end
 
   def expanded_rack
