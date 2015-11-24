@@ -76,7 +76,7 @@ class Rack
 private
   def expanded_channel(channel)
     ec = @rack[channel-1].dup
-    ec[5] = nil #extend array
+    ec += [nil] * (6 - ec.length) # pad to proper length
     ec.fill { |i| ec[i] || Cell.new(Empty, cell_address(channel, i)) }
   end
 
