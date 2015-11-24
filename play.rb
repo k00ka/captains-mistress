@@ -20,8 +20,11 @@ def automaton_menu
 end
 
 def automaton_selection(prompt)
-  print "#{[prompt, '>'].join ' '} "
-  Automaton.descendants[gets.chomp.to_i-1].new
+  begin
+    print "#{[prompt, '>'].join ' '} "
+    robot = Automaton.descendants[gets.chomp.to_i-1]
+    end while robot.nil?
+  robot.new
 end
 
 loop do
@@ -42,6 +45,8 @@ loop do
   when 'q'
     exit 0
   end
-  game = Game.new(p1, p2)
-  game.play if game
+  if p1 && p2
+    game = Game.new(p1, p2)
+    game.play if game
+  end
 end
