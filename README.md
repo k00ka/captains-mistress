@@ -110,7 +110,8 @@ If you want to learn (more) about TDD, there are plenty of online resources. For
 ```
 
 ###Adding an Automaton
-1. New automatons are created in the lib/automaton directory.
-1. The name of the automaton is the class name, it must inherit from the ``Automaton`` class.
+1. New automatons are created in the `lib/automatons` subdirectory.
+1. The name used for the automaton will be your class's name. The class must inherit from the `Automaton` class.
 1. The automaton must implement the move method (otherwise a runtime error is raised).
-1. You may use the public interfaces of any classes. The most interesting interfaces will be the ``Rack``, ``Cell``, and ``Game`` classes.
+1. You may use the public interfaces of any class. The most interesting interfaces will be the `Rack`, `Cell`, and `Game` classes.
+1. The move method should `puts` the chosen channel. The channel should be returned. Remember, `puts` returns `nil` so the puts cannot be the last line!
