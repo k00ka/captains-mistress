@@ -17,11 +17,6 @@ class Game
     setup_player(@oh_player, "oh")
   end
 
-  def setup_player(player, team_name)
-    player.team_name = team_name
-    player.game = self
-  end
-
   def game_over?
     winner? || @rack.rack_full?
   end
@@ -87,5 +82,10 @@ private
     else
       Rack::Empty
     end
+  end
+
+  def setup_player(player, team_name)
+    player.team_name = team_name
+    player.game = self
   end
 end
