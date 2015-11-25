@@ -134,11 +134,10 @@ We will aim to run the round-robin matches on the big screen around 8:45.
 ###Pull Requests
 To participate in the final sword fight, you will need to fork the repo so we can use pull requests to bring your new Automatons into this repo. This should be done just before the event, as we will be posting updates here throughout the day.
 
-Many of you have already cloned the repo. Here are instructions on how to convert a cloned repo into a fork: 
-1. In github, fork the Captain's Mistress repo. Here's the repo address: https://github.com/k00ka/captains-mistress
-2. On your machine, rename your origin remote to upstream: git remote rename origin upstream
-3. Add a new origin: git remote add origin https://github.com/GITHUBNAME/captains-mistress.git
-4. Fetch & push
-git fetch origin
-git push origin
-5. When ready, create a pull request and tap me on the shoulder.
+Many of you have already cloned the repo. Here are instructions on how to convert a cloned repo into a fork:
+
+1. In github, fork the Captain's Mistress repo. Here's the repo address: `https://github.com/k00ka/captains-mistress`
+1. On your machine, rename your origin remote to upstream: `git remote rename origin upstream`
+1. Add a new origin: `git remote add origin https://github.com/GITHUBNAME/captains-mistress.git`
+1. Fetch & push: `git fetch origin` then `git push origin` 
+1. When ready, push up your changes, create a pull request in github and tap me on the shoulder.
