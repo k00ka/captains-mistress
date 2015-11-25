@@ -1,5 +1,11 @@
-Captain's Mistress Workshop
-===========================
+Captain's Mistress Workshops
+============================
+
+Please note: there are several branches in this repo:
+* MASTER is the baseline (original) repo,
+* RHN1 is the branch representing the work completed at Ruby Hack Night July,
+* RHN2 is the branch representing the work completed at Ruby Hack Night September,
+* RHN3 is the branch representing the work completed at Ruby Hack Night November.
 
 ###Introduction
 
@@ -34,10 +40,6 @@ Use `bundle show [gemname]` to see where a bundled gem is installed.
 % rbenv rehash
 ```
 You are (almost) there!
-
-===
-STOP HERE IF YOU ARE READING THIS BEFORE THE WORKSHOP
-===
 
 ###Rules
 
@@ -109,9 +111,34 @@ If you want to learn (more) about TDD, there are plenty of online resources. For
 % ruby play.rb
 ```
 
+## NOTE: See the README in each branch for more resources related to the work done at each Hack Night. What follows is specific to the Automaton building exercise:
+
+### Workshop Agenda
+The Captain takes his final voyage tonight at Ruby Hack Night at The Score in Toronto.
+The basic agenda for this evening's workshop follows, culminating in the ULTIMATE SILICON SWORD FIGHT (pardon?)
+1. Review work to-date (i.e. demo the game and talk briefly about our progress).
+1. Build a simple Automaton together and learn about the AI API and "match mode".
+1. Discuss approaches to building tough opponents.
+1. In teams, design, build and test new Automatons.
+1. Bring together your best Automatons and use match mode to declare a victor.
+
+We will aim to run the round-robin matches on the big screen around 8:45.
+
 ###Adding an Automaton
 1. New automatons are created in the `lib/automatons` subdirectory.
 1. The name used for the automaton will be your class's name. The class must inherit from the `Automaton` class.
 1. The automaton must implement the move method (otherwise a runtime error is raised).
 1. You may use the public interfaces of any class. The most interesting interfaces will be the `Rack`, `Cell`, and `Game` classes.
 1. The move method should `puts` the chosen channel. The channel should be returned. Remember, `puts` returns `nil` so the puts cannot be the last line!
+
+###Pull Requests
+To participate in the final sword fight, you will need to fork the repo so we can use pull requests to bring your new Automatons into this repo. This should be done just before the event, as we will be posting updates here throughout the day.
+
+Many of you have already cloned the repo. Here are instructions on how to convert a cloned repo into a fork: 
+1. In github, fork the Captain's Mistress repo. Here's the repo address: https://github.com/k00ka/captains-mistress
+2. On your machine, rename your origin remote to upstream: git remote rename origin upstream
+3. Add a new origin: git remote add origin https://github.com/GITHUBNAME/captains-mistress.git
+4. Fetch & push
+git fetch origin
+git push origin
+5. When ready, create a pull request and tap me on the shoulder.
