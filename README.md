@@ -1,6 +1,12 @@
 Captain's Mistress Workshop
 ===========================
 
+Please note: there are several branches in this repo:
+* MASTER is the baseline (original) repo,
+* RHN1 is the branch representing the work completed at Ruby Hack Night July,
+* RHN2 is the branch representing the work completed at Ruby Hack Night September,
+* RHN3 is the branch representing the work completed at Ruby Hack Night November.
+
 ###Introduction
 
 During his long sea voyages, Captain Cook often retired to his cabin for long periods. The crew used to joke that he had a mistress hidden away. Soon they discovered that the Captain had simply been playing this game with the ship's scientist. Thus it came to be known as 'The Captain's Mistress’.
