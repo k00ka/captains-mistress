@@ -1,7 +1,6 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    byebug (8.2.0)
     diff-lcs (1.2.5)
     docile (1.1.5)
     flog (4.3.2)
@@ -35,7 +34,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  byebug
   flog
   rake
   rspec

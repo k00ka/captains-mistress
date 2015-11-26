@@ -11,13 +11,17 @@ class Commander_Data < Automaton
 			if !cells_to_move.empty?
 				cells_to_move.each do |cell|
 					channel_num = cell[0,1].to_i
-					return channel_num if !@game.rack.channel_full?(channel_num)
+					if !@game.rack.channel_full?(channel_num)
+            puts channel_num
+            return channel_num
+          end
 				end
 			end
 
 		end
 
-		return 4
+    puts 4
+		4
 	end
 
 	private

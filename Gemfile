@@ -18,5 +18,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'byebug'
+  #gem 'debugger'
+  #gem 'byebug'
 end

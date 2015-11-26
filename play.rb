@@ -1,4 +1,8 @@
+begin
 require 'byebug'
+require 'debugger'
+rescue LoadError
+end
 require './lib/game'
 require './lib/player'
 require './lib/human'
@@ -16,7 +20,7 @@ end
 
 def automaton_menu
   puts "Automatons"
-  automatons = Automaton.descendants
+  automatons = Automaton.descendants.sort_by { |a| a.name }
   automatons.each_with_index { |a,i| puts "#{i+1}. #{a.name}" }
 end
 
@@ -53,11 +57,11 @@ loop do
     games_to_play = @match_mode ? 15 : 1
     games_to_play.times do |game_number|
       puts "Game #{game_number} begins..."
+      game = Game.new(p1, p2)
       p1.prepare_to_play
       p2.prepare_to_play
-      game = Game.new(p1, p2)
       game.play
-      match_score[game.winner] += 1
+      match_score[game.winner] += 1 if game.winner?
     end
     if @match_mode
       puts "==========="
